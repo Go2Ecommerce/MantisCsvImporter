@@ -335,9 +335,11 @@ foreach( $t_file_content as $t_file_row ) {
         # Set non-custom fields
         if( $t_bug_id === null) {
             $t_bug_id = $t_bug_data->create();
+            event_signal( 'EVENT_REPORT_BUG', array($t_bug_data, $t_bug_id));
         } else {
             if( $callUpdate ) {
                 $t_bug_data->update( true, ( false == $t_notify ) );
+                event_signal( 'EVENT_UPDATE_BUG', array($t_bug_data, $t_bug_id));
             }
         }
 

@@ -343,20 +343,7 @@ foreach( $t_file_content as $t_file_row ) {
             }
         }
 
-        # Set custom fields (can be set only after bug creation)
-//   	foreach($t_custom_fields_to_set as $t_id => $t_value) {
-//      	if( custom_field_set_value( $t_id, $t_bug_id, $t_value ) ) {
-//      		# Mantis core doesn't update "last_updated" when setting custom fields
-//      		bug_update_date( $t_bug_id );
-//      	}
-//      	else {
-//      	   $t_failure_count++;
-//      	   $t_error_messages .= sprintf( $lineNumber . ' : ' . plugin_lang_get( 'error_custom_field' ),
-//      	                                                   $t_def['name'], $t_bug_data->summary) . '<br />';
-//            continue;
-//      	}
-//   	}
-# custom
+
         foreach($t_custom_fields_to_set as $t_id => $t_value) {
             if( custom_field_set_value( $t_id, $t_bug_id, $t_value ) ) {
                 # Mantis core doesn't update "last_updated" when setting custom fields

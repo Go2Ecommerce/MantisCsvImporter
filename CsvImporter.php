@@ -6,9 +6,9 @@ class CsvImporterPlugin extends MantisPlugin
 		$this->description = 'Plugin to import issues from csv';
 		$this->version = '1.0.0';
 		$this->requires = array( 'MantisCore' => '2.0.0' );
-		$this->author = 'Bug 4220 Team';
+		$this->author = 'michal@go2ecommerce.pl';
 		$this->contact = '';
-		$this->url = '';
+        	$this->url = 'https://agencja-ecommerce.pl';
 		$this->page = 'config';
 	}
 

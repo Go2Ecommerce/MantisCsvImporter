@@ -1,5 +1,5 @@
 <?php
-class CsvImporterPlugin extends MantisPlugin
+class CsvImportPlugin extends MantisPlugin
 {
 	function register() {
 		$this->name = 'CsvImporter Go2Ecommerce';

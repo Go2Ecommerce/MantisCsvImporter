@@ -8,7 +8,7 @@ class Csv_importPlugin extends MantisPlugin
 		$this->requires = array( 'MantisCore' => '2.0.0' );
 		$this->author = 'michal@go2ecommerce.pl';
 		$this->contact = '';
-        	$this->url = 'https://agencja-ecommerce.pl';
+		$this->url = 'https://agencja-ecommerce.pl';
 		$this->page = 'config';
 	}
 

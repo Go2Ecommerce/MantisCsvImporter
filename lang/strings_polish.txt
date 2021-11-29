@@ -1,0 +1,46 @@
+<?php
+
+# Custom strings for english language
+$s_plugin_Csv_import_title = 'Mantis CSV Importer';
+$s_plugin_Csv_import_description = 'Import plików CSV';
+$s_plugin_Csv_import_config = 'Konfiguracja';
+$s_plugin_Csv_import_update_config = 'Update konfigurajci';
+$s_plugin_Csv_import_file_format_col_spacer = 'CSV kolumn separator';
+$s_plugin_Csv_import_skip_blank_lines = 'Pomiń puste linie';
+$s_plugin_Csv_import_skip_blank_columns = 'Pomiń wszystkie kolumny od pustego nagłówka.';
+$s_plugin_Csv_import_create_unknown_cats = 'Utwórz puste kategorie';
+$s_plugin_Csv_import_tab_csv_separator = 'Użyj tabulatora';
+$s_plugin_Csv_import_error_keys = 'Klucz "%s" istnieje na wielu błędach: %s';
+
+# Import issues
+$s_plugin_Csv_import_manage_issues_link = 'Import pliku CSV';
+$s_plugin_Csv_import_manage_issues = 'Trwa proces importu CSV';
+$s_plugin_Csv_import_issues_file = 'Import zleceń from CSV file';
+$s_plugin_Csv_import_issues_columns = 'Kolumny pliku';
+$s_plugin_Csv_import_skip_first_line = 'Pomiń pierwszą linię';
+$s_plugin_Csv_import_file_button = 'Import pliku';
+$s_plugin_Csv_import_column_number = 'Kolumna #%d';
+$s_plugin_Csv_import_result_failure_ct = 'Zliczono błędów %d dla zleceń';
+$s_plugin_Csv_import_result_nothing_success_ct = '%d niezmienione zlecenia';
+$s_plugin_Csv_import_result_import_success_ct = '%d zlecenia zaimportowane';
+$s_plugin_Csv_import_result_update_success_ct = '%d zlecenia zupdatowane';
+$s_plugin_Csv_import_error_nolines = 'Musi być co najmniej jedna linia do importu';
+$s_plugin_Csv_import_error_empty_header = 'Nie musi być pustego nagłówka jeśli pomijamy pierwszą linie';
+$s_plugin_Csv_import_error_noseparator = 'Każda linia musi mieć separator "%s"';
+$s_plugin_Csv_import_error_col_count = 'Kaźda linia musi mieć "%s" licznik separatorów';
+$s_plugin_Csv_import_error_file_not_found = 'Plik nie odnaleziony';
+$s_plugin_Csv_import_error_file_not_writable = 'Nie mogę zapisać pliku';
+$s_plugin_Csv_import_error_file_not_opened = 'Nie mogę otworzyć pliku';
+$s_plugin_Csv_import_error_col_multiple = 'Te same kolumny definiuje więcej niż raz';
+$s_plugin_Csv_import_error_bug_not_exist = 'Problem %d nie istnieje';
+$s_plugin_Csv_import_error_bug_bad_project = 'Problem %d nie jest w obecnym projekcie';
+$s_plugin_Csv_import_error_any = 'Błąd przy obsłudze zlecenia "%s"';
+$s_plugin_Csv_import_error_custom_field = 'Błąd przy imporcie kolumny custom "%s" dla problemu "%s"';
+$s_plugin_Csv_import_error_col_select_multiple = 'Dane kolumny zostały wybrane więcej niż raz:';
+$s_plugin_Csv_import_max_file_size_label = 'Maksymalny rozmiar';
+
+# Errors
+$MANTIS_ERROR['plugin_Csv_import_ERROR_ALL_PROJECT'] = 'Projekt musi zostać wybrany by zaimportować zlecenia';
+$MANTIS_ERROR['plugin_Csv_import_ERROR_FILE_FORMAT'] = 'Niepoprawny format pliku: %s';
+$MANTIS_ERROR['plugin_Csv_import_ERROR_FILE'] = 'Wystąpił problem z plikiem';
+$MANTIS_ERROR['plugin_Csv_import_ERROR_FILE_UPLOAD'] = 'Serwer nie może przechować zaimpotowanego pliku.';

@@ -20,13 +20,17 @@ class Csv_importPlugin extends MantisPlugin
 
 	function hooks() {
 		return array(
-			'EVENT_MENU_MANAGE' => 'csv_import_menu',
+			'EVENT_MENU_MAIN' => 'menu',
 		);
 	}
 
-	function csv_import_menu() {
-		return array(
-			'<a href="' . plugin_page( 'import_issues_page_init' ) . '">' . plugin_lang_get( 'manage_issues_link' ) . '</a>',
-		);
-	}
+	function menu() {
+        $t_menu[] = array(
+            'title' => plugin_lang_get( 'manage_issues_link' ),
+            'url' => plugin_page( 'import_issues_page_init' ),
+            'access_level' => config_get( 'manage_plugin_threshold' ),
+            'icon' => 'fa-file'
+        );
+        return $t_menu;
+    }
 }

@@ -4,7 +4,7 @@
 $s_plugin_Csv_import_title = 'Mantis CSV Importer';
 $s_plugin_Csv_import_description = 'Import plików CSV';
 $s_plugin_Csv_import_config = 'Konfiguracja';
-$s_plugin_Csv_import_update_config = 'Update konfigurajci';
+$s_plugin_Csv_import_update_config = 'Update konfiguracji';
 $s_plugin_Csv_import_file_format_col_spacer = 'CSV kolumn separator';
 $s_plugin_Csv_import_skip_blank_lines = 'Pomiń puste linie';
 $s_plugin_Csv_import_skip_blank_columns = 'Pomiń wszystkie kolumny od pustego nagłówka.';

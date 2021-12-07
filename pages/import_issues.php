@@ -266,7 +266,7 @@ foreach( $t_file_content as $t_file_row ) {
                 $v = get_column_value( $aColumn, $t_file_row, '');
                 break;
             case 'category' :
-                $v = get_category_column_value('category', $t_file_row, $t_bug_data->project_id , null );
+                $v = get_category_column_value($aColumn, $t_file_row, $t_bug_data->project_id , null);
 
                 if( $v == null ) {
                     $t_cat = trim ( get_column_value( 'category', $t_file_row ) );
@@ -348,6 +348,7 @@ foreach( $t_file_content as $t_file_row ) {
             if( custom_field_set_value( $t_id, $t_bug_id, $t_value ) ) {
                 # Mantis core doesn't update "last_updated" when setting custom fields
                 bug_update_date( $t_bug_id );
+
             }
         }
 

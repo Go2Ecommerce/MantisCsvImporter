@@ -125,17 +125,62 @@ function read_csv_row( $p_file_row, $p_separator ) {
 	return array_map( 'csv_string_unescape', $t_row_element[1] );
 }
 
+function fixChars($text)
+{
+    $specialChars = [
+        '\u0105', # ą
+        '\u0107', # ć
+        '\u0119', # ę
+        '\u0142', # ł
+        '\u0144', # ń
+        '\u00f3', # ó
+        '\u015b', # ś
+        '\u017a', # ź
+        '\u017c', # ż
+        '\u0104', # Ą
+        '\u0106', # Ć
+        '\u0118', # Ę
+        '\u0141', # Ł
+        '\u0143', # Ń
+        '\u00d3', # Ó
+        '\u015a', # Ś
+        '\u0179', # Ż
+        '\u017b', # Ż
+    ];
+
+    $polishHtmlCodes = [
+        '&#261;', # ą
+        '&#263;', # ć
+        '&#281;', # ę
+        '&#322;', # ł
+        '&#324;', # ń
+        '&#243;', # ó
+        '&#347;', # ś
+        '&#378;', # ź
+        '&#380;', # ż
+        '&#260;', # Ą
+        '&#262;', # Ć
+        '&#280;', # Ę
+        '&#321;', # Ł
+        '&#323;', # Ń
+        '&#211;', # Ó
+        '&#346;', # Ś
+        '&#377;', # Ż
+        '&#379;', # Ż
+    ];
+
+    return str_replace($specialChars, $polishHtmlCodes, json_encode($text));
+}
+
 function category_get_id_by_name_ne( $p_category_name, $p_project_id ) {
-	# Don't cache categories as they can be added during the import process.
-	$t_categories = category_get_all_rows( $p_project_id );
-
-	foreach ( $t_categories as $t_category ) {
-		if( strcasecmp( $t_category['name'], $p_category_name ) == 0 ) {
-			return (int)$t_category['id'];
-		}
-	}
-
-	return false;
+    # Don't cache categories as they can be added during the import process.
+    $t_categories = category_get_all_rows( $p_project_id );
+    foreach ( $t_categories as $t_category ) {
+            if (strcmp(fixChars($p_category_name), fixChars($t_category['name'])) == 0) {
+                return (int)$t_category['id'];
+            }
+    }
+    return false;
 }
 
 function prepare_output( $t_string , $t_encode_only = false ) {
@@ -288,7 +333,7 @@ function column_value_exists( $p_name, $p_row ) {
 }
 
 function get_category_column_value( $p_name, $p_row, $p_project, $p_default ) {
-	$t_category_id = category_get_id_by_name_ne ( trim ( get_column_value( $p_name, $p_row ) ) , $p_project );
+	$t_category_id = category_get_id_by_name_ne (get_column_value( $p_name, $p_row ), $p_project );
 	return (($t_category_id === false) ? $p_default : $t_category_id);
 }
 

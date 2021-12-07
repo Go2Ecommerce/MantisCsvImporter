@@ -28,7 +28,7 @@ class Csv_importPlugin extends MantisPlugin
         $t_menu[] = array(
             'title' => plugin_lang_get( 'manage_issues_link' ),
             'url' => plugin_page( 'import_issues_page_init' ),
-            'access_level' => config_get( 'manage_plugin_threshold' ),
+            'access_level' => plugin_config_get( 'import_issues_threshold' ),
             'icon' => 'fa-file'
         );
         return $t_menu;

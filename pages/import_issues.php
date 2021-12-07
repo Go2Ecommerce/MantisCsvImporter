@@ -7,7 +7,7 @@ require_once( $t_core_path . 'category_api.php' );
 require_once( $t_core_path . 'database_api.php' );
 require_once( $t_core_path . 'user_api.php' );
 require_once( $t_core_path . 'bug_api.php' );
-access_ensure_project_level( config_get( 'manage_site_threshold' ) );
+access_ensure_project_level( plugin_config_get( 'import_issues_threshold' ));
 require_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'import_issues_inc.php' );
 
 # Check a project is selected

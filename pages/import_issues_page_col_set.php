@@ -13,6 +13,7 @@
 	require_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'import_issues_inc.php' );
 	# Look if the import file name is in the posted data
 	$f_import_file = gpc_get_file( 'import_file', -1 );
+    $t_project_id = helper_get_current_project();
 
 	# Check fields are set
 	if ( is_blank( $f_import_file['tmp_name'] ) || ( $f_import_file['size'] == 0 ) ) {
@@ -214,14 +215,14 @@
                            	   </tr>
 <?php
 	$t_column_title = array_map( 'trim', $t_column_title );
-
 	for( $t_fields = $g_all_fields, $i = 0; $i < $t_column_count; next( $t_fields ), $i++ ) {
 		if ( is_blank( $t_column_title[$i] ) ) {
 			continue;
 		}
-
+        $hasId = false;
 		# Map imported columns to fields.
 		if ( strtolower( $t_column_title[$i] ) == 'id' ) {
+		    $hasId = true;
 			# By default use import as new issues mode rather than update issues with matching ids.
 			$t_found_field = false;
 		} else if( isset( $g_all_fields[$t_column_title[$i]] ) ) {
@@ -232,11 +233,34 @@
 		{
 			$t_found_field = array_isearch( prepare_output($t_column_title[$i]), $g_all_fields );
 		}
+        $t_require = false;
+        $t_related_custom_field_ids = custom_field_get_linked_ids( $t_project_id );
+
+        if ($t_found_field == 'category' || $t_found_field == 'summary') {
+            $t_require = true;
+        } else {
+            foreach ($t_related_custom_field_ids as $t_id) {
+                $t_def = custom_field_get_definition($t_id);
+                if ($hasId) {
+                    if ($t_def['require_update'] && $t_def['name'] === $t_column_title[$i]) {
+                        $t_require = $t_def['require_update'] ? true : false;
+                        break;
+                    }
+                } else {
+                    if ($t_def['require_report'] && $t_def['name'] === $t_column_title[$i]) {
+                        $t_require = $t_def['require_report'] ? true : false;
+                        break;
+                    }
+                }
+
+            }
+        }
 
 		# Write
 		?>
 		<tr>
 			<td class="category">
+                <?php if( $t_require) {?><span class="required">*</span><?php } ?>
 				<?php
 					if( !$t_skip_first ) {
 						echo sprintf( plugin_lang_get( 'column_number' ), $i + 1);
